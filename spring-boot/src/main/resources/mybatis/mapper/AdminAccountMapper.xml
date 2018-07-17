@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.xp.dao.mapper.AdminAccountMapper">
+  <resultMap id="BaseResultMap" type="com.springboot.xp.dao.model.AdminAccount">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="EMP_ID" jdbcType="VARCHAR" property="empId" />
+    <result column="EMP_NAME" jdbcType="VARCHAR" property="empName" />
+    <result column="EMP_EMAIL" jdbcType="VARCHAR" property="empEmail" />
+    <result column="EMP_PWD" jdbcType="VARCHAR" property="empPwd" />
+    <result column="EMP_PHONE" jdbcType="VARCHAR" property="empPhone" />
+    <result column="EMP_MOBILE" jdbcType="VARCHAR" property="empMobile" />
+    <result column="ACCOUNT_TYPE" jdbcType="VARCHAR" property="accountType" />
+    <result column="IS_LIVE" jdbcType="VARCHAR" property="isLive" />
+    <result column="CREATOR" jdbcType="VARCHAR" property="creator" />
+    <result column="CREATE_DTTM" jdbcType="TIMESTAMP" property="createDttm" />
+    <result column="UPDATER" jdbcType="VARCHAR" property="updater" />
+    <result column="UPDATE_DTTM" jdbcType="TIMESTAMP" property="updateDttm" />
+    <result column="AM_PAY_MONEY" jdbcType="BIGINT" property="amPayMoney" />
+    <result column="AM_ENTRY_CONFIRM_NUM" jdbcType="BIGINT" property="amEntryConfirmNum" />
+    <result column="PAYMENTS_AMOUNT_COUNT" jdbcType="BIGINT" property="paymentsAmountCount" />
+    <result column="PAYMENTS_NUM" jdbcType="BIGINT" property="paymentsNum" />
+    <result column="JOB_DYNAMIC_INFORMATION_READTIME" jdbcType="TIMESTAMP" property="jobDynamicInformationReadtime" />
+    <result column="CANDIDATE_DYNAMIC_READTIME" jdbcType="TIMESTAMP" property="candidateDynamicReadtime" />
+    <result column="JOB_CONMUNICATION_TIME" jdbcType="TIMESTAMP" property="jobConmunicationTime" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
+    <result column="PREV_LOGIN_TIME" jdbcType="TIMESTAMP" property="prevLoginTime" />
+    <result column="NOW_LOGIN_TIME" jdbcType="TIMESTAMP" property="nowLoginTime" />
+    <result column="EMP_WECHAT" jdbcType="VARCHAR" property="empWechat" />
+    <result column="EMP_QQ" jdbcType="VARCHAR" property="empQq" />
+    <result column="EMP_LEVEL" jdbcType="INTEGER" property="empLevel" />
+    <result column="ROLE_ID" jdbcType="BIGINT" property="roleId" />
+    <result column="DUTIES" jdbcType="VARCHAR" property="duties" />
+    <result column="ROLE_SUBSECTION" jdbcType="BIGINT" property="roleSubsection" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="POSITION_RANK" jdbcType="VARCHAR" property="positionRank" />
+    <result column="SCORE" jdbcType="DOUBLE" property="score" />
+    <result column="FROZEN_TIME" jdbcType="TIMESTAMP" property="frozenTime" />
+    <result column="EHR_STAFF_ID" jdbcType="BIGINT" property="ehrStaffId" />
+  </resultMap>
+	
+</mapper>
