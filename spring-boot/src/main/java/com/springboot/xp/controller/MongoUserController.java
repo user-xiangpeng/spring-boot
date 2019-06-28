@@ -35,4 +35,14 @@ public class MongoUserController extends BaseController {
         return Result.success(userDao.query(new Query(), User.class));
     }
 
+    @GetMapping("/user/update")
+    public Result updateUserInfo(@RequestParam(value = "id", required = true) Long id, User user) {
+        return Result.success(userDao.updateById(id, user));
+    }
+
+    @GetMapping("/user/delete")
+    public Result deleteById(@RequestParam(value = "id", required = true) Long id) {
+        return Result.success(userDao.deleteById(id, User.class));
+    }
+
 }
