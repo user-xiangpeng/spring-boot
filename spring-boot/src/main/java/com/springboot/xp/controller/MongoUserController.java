@@ -32,7 +32,7 @@ public class MongoUserController extends BaseController {
 
     @GetMapping("/user/list")
     public Result listUserInfo() {
-        return Result.success(userDao.query(Query.query(null), User.class));
+        return Result.success(userDao.query(new Query(), User.class));
     }
 
 }
