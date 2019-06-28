@@ -1,7 +1,9 @@
-package com.springboot.xp.dao.model;
+package com.springboot.xp.dao.mysql.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "T_ADMIN_ACCOUNT")
 public class AdminAccount {
@@ -97,7 +99,7 @@ public class AdminAccount {
     private Long paymentsAmountCount;
 
     /**
-     *  回款人数
+     * 回款人数
      */
     @Column(name = "PAYMENTS_NUM")
     private Long paymentsNum;
@@ -486,7 +488,7 @@ public class AdminAccount {
     /**
      * 设置 回款人数
      *
-     * @param paymentsNum  回款人数
+     * @param paymentsNum 回款人数
      */
     public void setPaymentsNum(Long paymentsNum) {
         this.paymentsNum = paymentsNum;

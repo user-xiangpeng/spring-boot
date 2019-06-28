@@ -19,19 +19,19 @@
         </jdbcConnection>
 
         <!-- 对于生成的pojo所在包 -->
-        <javaModelGenerator targetPackage="com.springboot.xp.dao.model" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.springboot.xp.dao.mysql.model" targetProject="src/main/java"/>
 
         <!-- 对于生成的mapper所在目录 -->
         <sqlMapGenerator targetPackage="mybatis/mapper" targetProject="src/main/resources"/>
 
         <!-- 配置mapper对应的java映射 -->
-        <javaClientGenerator targetPackage="com.springboot.xp.dao.mapper" targetProject="src/main/java"
+        <javaClientGenerator targetPackage="com.springboot.xp.dao.mysql.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
 
-       	<table tableName="T_ADMIN_ACCOUNT" domainObjectName="AdminAccount">
-			<property name="useActualColumnNames" value="false" />
-		</table>
+        <table tableName="T_ADMIN_ACCOUNT" domainObjectName="AdminAccount">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
 
     </context>
 </generatorConfiguration>

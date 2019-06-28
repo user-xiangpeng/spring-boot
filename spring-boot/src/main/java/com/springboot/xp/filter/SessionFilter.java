@@ -23,52 +23,51 @@ import com.springboot.xp.controller.BaseController;
 
 @Component
 public class SessionFilter implements Filter {
-	
-	private List<Pattern> whiteUrlList = new ArrayList<Pattern>();
-	
-	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-		whiteUrlList.add(Pattern.compile("/hello"));
-		whiteUrlList.add(Pattern.compile("user/login"));
-		System.out.println("=====session filter init whiteUrlList done=====");
-	}
 
+    private List<Pattern> whiteUrlList = new ArrayList<Pattern>();
 
-	@Override
-	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
-			throws IOException, ServletException {
-		HttpServletRequest request = (HttpServletRequest) servletRequest;
-		HttpServletResponse response = (HttpServletResponse) servletResponse;
-		boolean isFree = false;
-		// 过滤掉不需要登录请求通过的路径
+    @Override
+    public void init(FilterConfig arg0) throws ServletException {
+        whiteUrlList.add(Pattern.compile("/hello"));
+        whiteUrlList.add(Pattern.compile("/mongo/.+$"));
+        whiteUrlList.add(Pattern.compile("user/login"));
+        System.out.println("=====session filter init whiteUrlList done=====");
+    }
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException {
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        boolean isFree = false;
+        // 过滤掉不需要登录请求通过的路径
         for (Pattern pattern : whiteUrlList) {
             Matcher matcher = pattern.matcher(request.getRequestURI());
             if (matcher.find()) {
-            	isFree = true;
+                isFree = true;
                 break;
             }
         }
         if (isFree) {
-        	filterChain.doFilter(request, response);
-        	return;
+            filterChain.doFilter(request, response);
+            return;
         }
         // 是否登录
         HttpSession session = request.getSession();
-		AuthSession authSession = (AuthSession) session.getAttribute(BaseController.AUTH_SESSION);
-		if (null == authSession) {
-			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-			 response.setCharacterEncoding("UTF-8");
-			 response.setContentType("application/json;charset=UTF-8");
-			 return;
-		}
-		filterChain.doFilter(request, response);
+        AuthSession authSession = (AuthSession) session.getAttribute(BaseController.AUTH_SESSION);
+        if (null == authSession) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json;charset=UTF-8");
+            return;
+        }
+        filterChain.doFilter(request, response);
 
-	}
-	
+    }
 
-	@Override
-	public void destroy() {
-		whiteUrlList = null;
-	}
+    @Override
+    public void destroy() {
+        whiteUrlList = null;
+    }
 
 }
