@@ -30,6 +30,7 @@ public class SessionFilter implements Filter {
     public void init(FilterConfig arg0) throws ServletException {
         whiteUrlList.add(Pattern.compile("/hello"));
         whiteUrlList.add(Pattern.compile("/mongo/.+$"));
+        whiteUrlList.add(Pattern.compile("/excel/.+$"));
         whiteUrlList.add(Pattern.compile("user/login"));
         System.out.println("=====session filter init whiteUrlList done=====");
     }
