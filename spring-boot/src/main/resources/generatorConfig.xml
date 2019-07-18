@@ -4,13 +4,12 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <context id="MysqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+
+    <classPathEntry location="D:\MyMaven\repository\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar"/>
+
+    <context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
-
-        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.springboot.xp.tools.generator.MyMapper"/>
-        </plugin>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://192.168.0.65:3306/lieni-dev?characterEncoding=utf8"
@@ -30,6 +29,10 @@
 
 
         <table tableName="T_ADMIN_ACCOUNT" domainObjectName="AdminAccount">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="T_GW_ACCOUNT" domainObjectName="GwAccount">
             <property name="useActualColumnNames" value="false"/>
         </table>
 

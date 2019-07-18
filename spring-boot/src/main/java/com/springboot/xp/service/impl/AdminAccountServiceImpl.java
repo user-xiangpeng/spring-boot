@@ -1,13 +1,15 @@
 package com.springboot.xp.service.impl;
 
-import com.springboot.xp.dao.mysql.mapper.AdminAccountMapper;
-import com.springboot.xp.dao.mysql.model.AdminAccount;
-import com.springboot.xp.exception.BaseException;
-import com.springboot.xp.service.IAdminAccountService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.springboot.xp.dao.mysql.mapper.AdminAccountMapper;
+import com.springboot.xp.dao.mysql.model.AdminAccount;
+import com.springboot.xp.dao.mysql.model.AdminAccountExample;
+import com.springboot.xp.exception.BaseException;
+import com.springboot.xp.service.IAdminAccountService;
 
 @Service
 public class AdminAccountServiceImpl implements IAdminAccountService {
@@ -17,7 +19,7 @@ public class AdminAccountServiceImpl implements IAdminAccountService {
 
     @Override
     public List<AdminAccount> all() {
-        return adminAccountMapper.selectAll();
+        return adminAccountMapper.selectByExample(new AdminAccountExample());
     }
 
     @Override
@@ -27,14 +29,13 @@ public class AdminAccountServiceImpl implements IAdminAccountService {
 
     @Override
     public AdminAccount login(String email, String password) throws BaseException {
-        AdminAccount adminAccount = new AdminAccount();
-        adminAccount.setEmpEmail(email);
-        adminAccount.setEmpPwd(password);
-        List<AdminAccount> list = adminAccountMapper.select(adminAccount);
+        AdminAccountExample example = new AdminAccountExample();
+        example.createCriteria().andEmpEmailEqualTo(email).andEmpPwdEqualTo(password);
+        List<AdminAccount> list = adminAccountMapper.selectByExample(example);
         if (null == list) {
             throw new BaseException(BaseException.NOACCOUNT_OR_PWDERROR);
         }
-        return adminAccount;
+        return list.get(0);
     }
 
 }

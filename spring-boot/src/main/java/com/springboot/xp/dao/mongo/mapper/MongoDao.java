@@ -29,6 +29,14 @@ public class MongoDao<T> {
         return t;
     }
 
+    public List<T> insert(List<T> t, Class<T> c) {
+        if (null == t) {
+            return null;
+        }
+        mongoTemplate.insert(t, c);
+        return t;
+    }
+
     public List<T> query(Query query, Class<T> c) {
         return mongoTemplate.find(query, c);
     }
